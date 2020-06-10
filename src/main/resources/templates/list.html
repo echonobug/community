@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="list">
+    <!--/*@thymesVar id="pageInfo" type="com.github.pagehelper.PageInfo"*/-->
+    <div class="media border-top p-2" th:each="item : ${pageInfo.list}">
+        <!--/*@thymesVar id="item" type="fun.jwei.community.dto.QuestionAndUserDTO"*/-->
+        <img th:src="${item.user.avatarUrl}" class="mr-3 pic-head rounded" alt="" src="">
+        <div class="media-body">
+            <a th:href="'/question/'+${item.question.id}" class="text-decoration-none">
+                <h5 class="mt-0" th:text="${item.question.title}"></h5>
+            </a>
+            <span class="text-about">
+                • <span th:text="${item.question.commentCount}"></span> 个评论
+                • <span th:text="${item.question.viewCount}"></span> 次浏览
+                • <span th:text="${#dates.format(item.question.gmtModified, 'yyyy-MM-dd HH:mm')}"></span>
+            </span>
+        </div>
+    </div>
+    <nav th:replace="page-nav :: page-nav"></nav>
+</div>
+<div th:fragment="notification-list">
+    <!--/*@thymesVar id="pageInfo" type="com.github.pagehelper.PageInfo"*/-->
+    <div class="media border-top p-2" th:each="item : ${pageInfo.list}">
+        <!--/*@thymesVar id="item" type="fun.jwei.community.dto.NotificationDTO"*/-->
+        <div class="media-body">
+            <span>
+                <h5 class="mt-0">
+                    <span th:text="${item.userName}"></span>
+                    回复了
+                    <span th:text="${item.type} eq 1 ? '你的问题' : '你对问题'"></span>
+                    <a th:href="'/question/'+${item.questionId}+'?readId='+${item.id}" class="text-decoration-none">
+                        <span th:text="${item.questionTitle}"></span>
+                    </a>
+                    <span th:text="${item.type} eq 1 ? '' : '的回复'"></span>
+                </h5>
+            </span>
+            <span class="text-about">
+                <span th:text="${#dates.format(item.gmt_reply, 'yyyy-MM-dd HH:mm')}"></span>
+                <span th:if="${item.status} eq 0" class="badge badge-warning">未读</span>
+            </span>
+        </div>
+    </div>
+    <nav th:replace="page-nav :: page-nav"></nav>
+</div>
+<div th:fragment="comment-list">
+    <h5><span th:text="${questionAndUser.question.commentCount}"></span>个回复</h5>
+    <!--/*@thymesVar id="item" type="fun.jwei.community.dto.CommentAndUserDTO"*/-->
+    <div class="media border-top p-2" th:each="item : ${pageInfo.list}">
+        <img th:src="${item.user.avatarUrl}" class="mr-3 mt-1 pic-head rounded" alt="" src="">
+        <div class="media-body">
+            <div class="text-about" th:text="${item.user.name}"></div>
+            <div th:text="${item.comment.content}"></div>
+            <div>
+                <ul class="list-inline mt-1">
+                    <li class="list-inline-item mr-0">
+                        <button type="button" class="btn btn-light btn-icon"
+                                th:onclick="'like(this,'+${item.comment.id}+')'">
+                            <img src="/svg/like.svg" class="icon-sm" alt="">
+                            <span th:text="${item.comment.likeCount}"></span>
+                        </button>
+                    </li>
+                    <li class="list-inline-item ml-0">
+                        <button type="button" class="btn btn-light btn-icon"
+                                th:onclick="'getReply(this,'+${item.comment.id}+')'">
+                            <img src="/svg/chat.svg" class="icon-sm" alt="">
+                            <span th:text="${item.comment.replyCount}"></span>
+                        </button>
+                    </li>
+                    <li class="list-inline-item float-right">
+                        <span th:text="${#dates.format(item.comment.gmtCreate, 'yyyy-MM-dd HH:mm')}"></span>
+                    </li>
+                </ul>
+            </div>
+            <div th:id="'comment-'+${item.comment.id}" class="div-secondary-comment rounded "></div>
+        </div>
+    </div>
+    <nav th:replace="page-nav :: page-nav"></nav>
+</div>
+</body>
+</html>

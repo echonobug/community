@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav th:fragment="page-nav">
+    <ul class="pagination justify-content-end">
+        <!--/*@thymesVar id="pageAction" type="java.lang.String"*/-->
+        <li class="page-item" th:classappend="${pageInfo.isFirstPage eq true}?'d-none'">
+            <a class="page-link" th:href="${pageAction}+1">首页</a>
+        </li>
+        <li class="page-item" th:classappend="${pageInfo.hasPreviousPage eq false}?'d-none'">
+            <a class="page-link" th:href="${pageAction}+${pageInfo.prePage}">
+                <span aria-hidden="true">&lt;</span>
+            </a>
+        </li>
+        <li class="page-item" th:each="currPage : ${pageInfo.navigatepageNums}"
+            th:classappend="${pageInfo.pageNum eq currPage}?'active'">
+            <a class="page-link" th:href="${pageAction}+${currPage}" th:text="${currPage}"></a>
+        </li>
+        <li class="page-item" th:classappend="${pageInfo.hasNextPage eq false}?'d-none'">
+            <a class="page-link" th:href="${pageAction}+${pageInfo.nextPage}">
+                <span aria-hidden="true">&gt;</span>
+            </a>
+        </li>
+        <li class="page-item" th:classappend="${pageInfo.isLastPage eq true}?'d-none'">
+            <a class="page-link" th:href="${pageAction}+${pageInfo.pages}">尾页</a>
+        </li>
+    </ul>
+</nav>
+
+</body>
+</html>

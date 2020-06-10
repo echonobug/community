@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="secondary-list">
+    <div class="media border-bottom p-2" th:each="item : ${list}">
+        <img th:src="${item.user.avatarUrl}" class="mr-3 mt-1 pic-head rounded" alt="" src="">
+        <div class="media-body">
+            <div class="text-about" th:text="${item.user.name}"></div>
+            <div th:text="${item.comment.content}"></div>
+            <div>
+                <ul class="list-inline mt-1">
+                    <li class="list-inline-item mr-0">
+                        <button type="button" class="btn btn-light btn-icon"
+                                th:onclick="'like(this,'+${item.comment.id}+')'">
+                            <img src="/svg/like.svg" class="icon-sm" alt="">
+                            <span th:text="${item.comment.likeCount}"></span>
+                        </button>
+                    </li>
+                    <li class="list-inline-item ml-0">
+                        <button type="button" class="btn btn-light btn-icon"
+                                th:onclick="changeReply([[${id}]],[[${item.user.name}]],[[${item.comment.id}]])">
+                            <img src="/svg/chat.svg" class="icon-sm" alt="">
+                            <span>回复</span>
+                        </button>
+                    </li>
+                    <li class="list-inline-item float-right">
+                        <span th:text="${#dates.format(item.comment.gmtCreate, 'yyyy-MM-dd HH:mm')}"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="p-2" th:if="${session.user} ne null">
+        <input type="hidden" th:id="'reply-pre-'+${id}" value="">
+        <input type="text" class="form-control" th:id="'input-'+${id}" placeholder="评论一下...">
+        <div class="div-btn-reply" th:id="'div-btn-'+${id}">
+            <button type="button" class="btn btn-success mt-2 ml-1 btn-icon float-right"
+                    th:onclick="'reply(this,'+${id}+')'">
+                回复
+            </button>
+            <button type="button" class="btn btn-warning mt-2 btn-icon float-right"
+                    th:onclick="'replyCancal(this,'+${id}+')'">
+                取消
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

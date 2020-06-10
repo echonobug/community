@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>First社区</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <script src="/js/jquery-3.4.1.js" type="application/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body>
+<div th:replace="navbar :: navbar"></div>
+
+<div class="container-fluid content">
+    <div class="row no-gutters">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-12">
+            <h4>
+                <img src="/svg/list-ul.svg" alt="" width="32" height="32">
+                发现
+            </h4>
+            <div th:replace="list :: list"></div>
+        </div>
+        <div class="col-lg-3 d-none d-lg-block">
+            <div class="row no-gutters">
+                <div class="col-lg-1 div-line">
+                </div>
+                <div class="col-lg-11 pl-3">
+                    <h5>热门话题</h5>
+                    <ul class="a-list">
+                        <li th:each="item : ${popularQuestions}">
+                            <a th:href="'/question/'+${item.id}" th:text="${item.title}"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
