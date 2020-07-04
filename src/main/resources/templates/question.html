@@ -97,7 +97,7 @@
                     <h5>相关问题</h5>
                     <hr class="d-block d-lg-none">
                     <ul class="a-list">
-                        <li th:each="item : ${relatedQuestions}">
+                        <li th:each="item : ${relatedQuestions}" class="single-line">
                             <a th:href="'/question/'+${item.id}" th:text="${item.title}"></a>
                         </li>
                     </ul>

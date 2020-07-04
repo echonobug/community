@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>First社区</title>
+    <title>Sky社区</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/common.css"/>
     <script src="/js/jquery-3.4.1.js" type="application/javascript"></script>
@@ -27,7 +27,7 @@
                 <div class="col-lg-11 pl-3">
                     <h5>热门话题</h5>
                     <ul class="a-list">
-                        <li th:each="item : ${popularQuestions}">
+                        <li th:each="item : ${popularQuestions}" class="single-line">
                             <a th:href="'/question/'+${item.id}" th:text="${item.title}"></a>
                         </li>
                     </ul>

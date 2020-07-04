@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册成功</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <script src="/js/jquery-3.4.1.js" type="application/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body>
+<div th:replace="navbar :: navbar"></div>
+<div class="container-fluid content">
+    注册成功！<br>
+    欢迎注册Sky社区！<br>
+    您的账号为：<b th:text="${user_id}"></b><br>
+    请使用该账号和你设置的密码登录！<a href="/login.html">去登录？</a>
+</div>
+</body>
+</html>

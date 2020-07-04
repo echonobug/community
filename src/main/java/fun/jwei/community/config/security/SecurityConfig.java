@@ -41,6 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        http.headers().contentTypeOptions().disable();
         http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
                 .csrf().disable()
+                .headers().frameOptions().disable()
+                .and()
                 .rememberMe()
                 .userDetailsService(myUserDetailsService)
                 .tokenValiditySeconds(2 * 24 * 60 * 60)
@@ -55,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler(myAuthenticationFailureHandler)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/publish*", "/comment*").authenticated()
+                .antMatchers("/publish*", "/comment*", "/like").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .logout()

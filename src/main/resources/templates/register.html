@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <script src="/js/jquery-3.4.1.js" type="application/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/register.js" type="application/javascript"></script>
+</head>
+<body>
+<div th:replace="navbar :: navbar"></div>
+<div class="container-fluid content">
+    <form id="register_form">
+        <div class="col-md-10 mb-1 height-100">
+            <div class="form-row">
+                <label for="username">用户名（昵称）</label>
+                <input type="text" name="name" class="form-control" id="username" required>
+                <div class="invalid-feedback">
+                    用户名不能为空
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 mb-3">
+            <div class="form-row">
+                <label for="avatarUrl">头像url</label>
+                <input type="text" class="form-control" name="avatarUrl" id="avatarUrl"
+                       value="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=188149577,2949073731&fm=26&gp=0.jpg"
+                       placeholder="请输入网络图片的url" required>
+                <div class="mt-1">
+                    <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=188149577,2949073731&fm=26&gp=0.jpg"
+                         alt="url无效！" id="avatarImg" class="rounded pic-head">
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-10 mb-1 height-100">
+            <div class="form-row">
+                <label for="password">密码</label>
+                <input type="password" class="form-control" name="password" id="password" required>
+                <div class="invalid-feedback">
+                    密码太短，密码至少为6位
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 mb-1 height-100">
+            <div class="form-row">
+                <label for="validate_password">确认密码</label>
+                <input type="password" class="form-control" id="validate_password" required>
+                <div class="invalid-feedback">
+                    两次输入密码不一致！
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 mb-1 height-40">
+            <button class="btn btn-primary float-right" type="submit">注册</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
