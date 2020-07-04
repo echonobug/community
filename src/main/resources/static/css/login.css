@@ -1,0 +1,314 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #666666;
+    margin: 0px;
+}
+
+a:hover {
+    color: #a64bf4;
+}
+
+button {
+    outline: none !important;
+    border: none;
+    background: transparent;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+input {
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+
+body {
+    height: 100%;
+    background: radial-gradient(200% 100% at bottom center, #f7f7b6, #e96f92, #75517d, #1b2947);
+    background: radial-gradient(220% 105% at top center, #1b2947 10%, #75517d 40%, #e96f92 65%, #f7f7b6);
+    background-attachment: fixed;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: rgba(255,255,255,0.75);
+    border-radius: 10px;
+    width: 500px;
+    padding: 30px 55px;
+}
+
+.form-title {
+    font-size: 39px;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.input-item {
+    width: 100%;
+    border-bottom: 2px solid #d9d9d9;
+    margin-bottom: 20px;
+}
+
+
+.input-label {
+    font-size: 14px;
+    color: #333333;
+    line-height: 1.5;
+    padding-left: 7px;
+}
+
+.input-i {
+    width: 100%;
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    color: #7f7f7f;
+}
+
+.focus-line {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #7f7f7f;
+    transition: all 0.4s;
+}
+
+.input:focus + .input-icon {
+    color: #a64bf4;
+}
+
+.input:focus ~ .focus-line {
+    width: 100%;
+}
+
+
+.input {
+    padding-left: 35px;
+    width: 100%;
+    font-size: 16px;
+    color: #333333;
+    line-height: 1.2;
+    display: block;
+    height: 55px;
+}
+
+.input-vcode {
+    width: 70% !important;
+}
+
+.vcode {
+    width: 100px;
+    position: absolute;
+    top: 7px;
+    right: 6px;
+    height: 40px;
+}
+
+.vcode:hover {
+    cursor: pointer;
+}
+.remember{
+    float: left;
+    margin-left: 7px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #666666;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 58px;
+}
+.forget {
+    text-align: right;
+}
+
+.login-btn-div {
+    width: 100%;
+    border-radius: 25px;
+    z-index: 1;
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-btn-bg {
+    position: absolute;
+    z-index: -1;
+    width: 200%;
+    height: 100%;
+    background-image: linear-gradient(to right, #75517d, #fc00ff, #75517d);
+    top: 0;
+    left: -100%;
+    transition: all 0.4s;
+}
+
+.login-btn-div:hover .login-btn-bg {
+    left: 0;
+}
+
+.login-btn {
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.2;
+    padding: 0 20px;
+    width: 100%;
+    height: 50px;
+}
+
+.other-title {
+    font-size: 14px;
+    color: #333333;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.other-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.other-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.other-item:hover {
+    color: #fff;
+    background-color: #75517d;
+}
+
+.bg1 {
+    background-color: #3b5998
+}
+
+.bg2 {
+    background-color: #1da1f2
+}
+
+.register {
+    font-size: 14px;
+    color: #333333;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.validate-input {
+    position: relative;
+}
+
+.alert-validate::before {
+    content: attr(data-validate);
+    position: absolute;
+    max-width: 70%;
+    background-color: #fff;
+    border: 1px solid #c80000;
+    border-radius: 2px;
+    padding: 4px 25px 4px 10px;
+    bottom: 27px;
+    transform: translateY(50%);
+    right: 2px;
+    pointer-events: none;
+    color: #c80000;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: left;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.alert-validate::after {
+    content: "\f06a";
+    font-family: FontAwesome;
+    display: block;
+    position: absolute;
+    color: #c80000;
+    font-size: 16px;
+    bottom: 27px;
+    transform: translateY(50%);
+    right: 8px;
+}
+
+.vcode-i.alert-validate::before {
+    right: 120px;
+}
+
+.vcode-i.alert-validate::after {
+    right: 126px;
+}
+
+.alert-validate:hover:before {
+    visibility: visible;
+    opacity: 1;
+}
+
+@keyframes rotate {
+    0% {
+        transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+    }
+    100% {
+        transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
+    }
+}
+
+.stars {
+    transform: perspective(500px);
+    transform-style: preserve-3d;
+    position: absolute;
+    bottom: 0;
+    perspective-origin: 50% 100%;
+    left: 50%;
+    animation: rotate 90s infinite linear;
+}
+
+.star {
+    width: 2px;
+    height: 2px;
+    background: #F7F7B6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0 -300px;
+    transform: translate3d(0, 0, -300px);
+    backface-visibility: hidden;
+}

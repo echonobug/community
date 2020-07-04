@@ -52,8 +52,7 @@
             </div>
             <hr>
             <ul class="list-inline">
-                <li class="list-inline-item"
-                    th:if="${session.user ne null && session.user.id eq questionAndUser.user.id}">
+                <li class="list-inline-item" th:if="${session.user ne null}">
                     <img src="/svg/chat.svg" class="icon-sm" alt="">
                     <a data-toggle="collapse" href="#comment-div">评论</a>
                 </li>

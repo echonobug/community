@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="/font-awesome-4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/login.css"/>
+    <script src="/js/jquery-3.4.1.js" type="application/javascript"></script>
+    <script src="/js/login.js" type="application/javascript"></script>
+
+</head>
+<body>
+<div class="stars"></div>
+<div class="container">
+    <span class="form-title">登录</span>
+    <div class="input-item">
+        <span class="input-label">账号</span>
+        <div class="input-i" data-validate="账号不能为空">
+            <input class="input" type="text" name="username" placeholder="请输入账号">
+            <i class="fa fa-user-o input-icon"></i>
+            <div class="focus-line"></div>
+        </div>
+    </div>
+    <div class="input-item">
+        <span class="input-label">密码</span>
+        <div class="input-i" data-validate="密码不能为空">
+            <input class="input" type="text" name="password" placeholder="请输入密码" autocomplete="off">
+            <i class="fa fa-lock input-icon"></i>
+            <div class="focus-line"></div>
+        </div>
+    </div>
+    <div class="input-item">
+        <span class="input-label">验证码</span>
+        <div class="input-i  vcode-i" data-validate="验证码不能为空">
+            <input class="input input-vcode" type="text" name="password" placeholder="请输入验证码" autocomplete="off">
+            <i class="fa fa-check-square-o input-icon"></i>
+            <div class="focus-line"></div>
+            <img id="vcodeimg" class="vcode" src="vcode" title="点击刷新" alt="点击刷新"/>
+        </div>
+    </div>
+    <div>
+        <div class="remember">
+            <input type="checkbox" name="remember-me" id="remember-me"/><label>记住我</label>
+        </div>
+        <div class="forget">
+            <a href="javascript:">忘记密码？</a>
+        </div>
+    </div>
+
+    <div class="login-btn-div">
+        <div class="login-btn-bg"></div>
+        <button id="login-btn" class="login-btn">登 录</button>
+    </div>
+    <div class="other-title">
+        <span>第三方登录</span>
+    </div>
+    <div class="other-content">
+        <a href="#" class="other-item bg1">
+            <i class="fa fa-github"></i>
+        </a>
+        <a href="#" class="other-item bg2">
+            <i class="fa fa-qq"></i>
+        </a>
+    </div>
+    <div class="register">
+        <a href="javascript:">没有账号？去注册</a>
+    </div>
+</div>
+</body>
+</html>

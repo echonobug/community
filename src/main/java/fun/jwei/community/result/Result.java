@@ -16,6 +16,11 @@ public class Result<T> {
         this.data = data;
     }
 
+    public Result(T data) {
+        this(ResultEnum.SUCCESS);
+        this.data = data;
+    }
+
     public Integer getCode() {
         return code;
     }

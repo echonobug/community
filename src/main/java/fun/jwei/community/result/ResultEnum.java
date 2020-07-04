@@ -1,7 +1,9 @@
 package fun.jwei.community.result;
 
 public enum ResultEnum {
-    SUCCESS(0,"请求成功！");
+    SUCCESS(0,"请求成功！"),
+    LOGIN_SUCCESS(1000,"登录成功！"),
+    LOGIN_FAIL(2100, "登录失败!");;
 
     private Integer code;
     private String message;
