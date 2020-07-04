@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
@@ -30,6 +31,7 @@ public class LoginController {
                          HttpServletResponse response,
                          String t) throws IOException {
 
+        HttpSession session = request.getSession();
         response.setDateHeader("Expires", 0);
         // Set standard HTTP/1.1 no-cache headers.
         response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
@@ -42,6 +44,6 @@ public class LoginController {
 
         String vcode = genVcode.generateVCode(response.getOutputStream());
 
-        request.getSession().setAttribute(MyConstants.VALIDATE_KEY, vcode);
+        session.setAttribute(MyConstants.VALIDATE_KEY, vcode);
     }
 }

@@ -17,10 +17,10 @@ spring:
 #github app
 github:
   client:
-    id: 63d1a395aceaad8a081c
-    secret: 2470cba10d7a5f761ba003361b392de0e6618d80
+    id: 7c83f786ddc818261e4e
+    secret: dd4320caf695432e545e2988320425409d690f08
   redirect:
-    uri: http://localhost/callback
+    uri: http://localhost/github/callback
 #mybatis
 mybatis:
   configuration:

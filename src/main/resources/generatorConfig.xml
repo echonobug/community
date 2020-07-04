@@ -31,7 +31,9 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="user" domainObjectName="User"/>
+        <table tableName="user" domainObjectName="User">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
         <table tableName="github_user" domainObjectName="GithubUser"/>
         <table tableName="question" domainObjectName="Question"/>
         <table tableName="comment" domainObjectName="Comment">

@@ -5,39 +5,41 @@ import fun.jwei.community.mapper.UserMapper;
 import fun.jwei.community.model.User;
 import fun.jwei.community.model.UserExample;
 import fun.jwei.community.service.UserService;
+import fun.jwei.community.util.MyConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
+
     @Override
-    public String createOrUpdate(GithubUser githubUser) {
+    public Long createOrUpdate(GithubUser githubUser) {
         UserExample userExample = new UserExample();
-        userExample.createCriteria().andAccountIdEqualTo(githubUser.getId());
+        userExample.createCriteria()
+                .andAccountIdEqualTo(githubUser.getId())
+                .andUserTypeEqualTo(MyConstants.GITHUB_USER);
         List<User> users = userMapper.selectByExample(userExample);
         User user;
-        String token = UUID.randomUUID().toString();
-        if(users.size() == 0){
+        if (users.size() == 0) {
             user = new User();
-            updateUser(githubUser, user, token);
+            updateUser(githubUser, user);
             user.setAccountId(githubUser.getId());
             user.setGmtCreate(System.currentTimeMillis());
-            userMapper.insert(user);
-        }else {
+            user.setUserType(MyConstants.GITHUB_USER);
+            userMapper.insertSelective(user);
+        } else {
             user = users.get(0);
-            updateUser(githubUser,user,token);
+            updateUser(githubUser, user);
             userMapper.updateByPrimaryKey(user);
         }
-        return user.getToken();
+        return user.getId();
     }
 
-    private void updateUser(GithubUser githubUser, User user, String token) {
+    private void updateUser(GithubUser githubUser, User user) {
         user.setName(githubUser.getName());
-        user.setToken(token);
         user.setGmtModified(System.currentTimeMillis());
         user.setAvatarUrl(githubUser.getAvatarUrl());
     }
