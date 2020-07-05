@@ -1,8 +1,7 @@
 $(function () {
     draw_bg();
     $("#vcodeimg").click(function () {
-        var timestamp = (new Date()).valueOf();
-        $("#vcodeimg").attr("src", "vcode?t=" + timestamp);
+        updateVcode()
     });
     $("#login-btn").click(function () {
         login();
@@ -30,6 +29,7 @@ function login() {
                     location.href = res.data
                 }else {
                     alert(res.data)
+                    updateVcode()
                 }
             }
         )
@@ -80,4 +80,13 @@ function draw_bg() {
             transform: " translate3d(0,0,-" + curR + "px) rotateY(" + (Math.random() * 360) + "deg) rotateX(" + (Math.random() * -50) + "deg) scale(" + s + "," + s + ")"
         })
     })
+}
+
+function updateVcode() {
+    var timestamp = (new Date()).valueOf();
+    $("#vcodeimg").attr("src", "vcode?t=" + timestamp);
+}
+
+function developing() {
+    alert("该功能正在开发中！试试其他的吧٩(๑❛ᴗ❛๑)۶")
 }

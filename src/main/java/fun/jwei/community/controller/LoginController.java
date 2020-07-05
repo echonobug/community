@@ -24,22 +24,10 @@ import java.io.IOException;
 public class LoginController {
 
     private GenVcode genVcode;
-    private UserMapper userMapper;
-    private PasswordEncoder passwordEncoder;
 
     @Autowired
     public void setGenVcode(GenVcode genVcode) {
         this.genVcode = genVcode;
-    }
-
-    @Autowired
-    public void setUserMapper(UserMapper userMapper) {
-        this.userMapper = userMapper;
-    }
-
-    @Autowired
-    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
     }
 
 
@@ -65,22 +53,5 @@ public class LoginController {
         session.setAttribute(MyConstants.VALIDATE_KEY, vcode);
     }
 
-    @GetMapping("register")
-    public String toRegister() {
-        return "register";
-    }
 
-    @ResponseBody
-    @PostMapping("doRegister")
-    public Result<Long> doRegister(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userMapper.insertSelective(user);
-        return new Result<>(ResultEnum.SUCCESS, user.getId());
-    }
-
-    @GetMapping("registerSuccess")
-    public String registerSuccess(Model model, String id) {
-        model.addAttribute("user_id", id);
-        return "register-success";
-    }
 }

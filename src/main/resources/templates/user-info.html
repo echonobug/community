@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="editProfile">
+    <!--/*@thymesVar id="currUser" type="fun.jwei.community.model.User"*/-->
+    <form id="edit-profile">
+        <div class="col-md-10 mb-1 mt-3">
+            <div class="form-row">
+                <label for="uid">账号（ID）</label>
+                <input type="text" name="id" th:value="${currUser.id}" class="form-control" id="uid" readonly required>
+            </div>
+        </div>
+        <div class="col-md-10 mb-1 height-100">
+            <div class="form-row">
+                <label for="username">用户名（昵称）</label>
+                <input type="text" name="name" th:value="${currUser.name}" class="form-control" id="username" required>
+                <div class="invalid-feedback">
+                    用户名不能为空
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 mb-3">
+            <div class="form-row">
+                <label for="avatarUrl">头像url</label>
+                <input type="text" class="form-control" name="avatarUrl" id="avatarUrl"
+                       th:value="${currUser.avatarUrl}"
+                       placeholder="请输入网络图片的url" required>
+                <div class="mt-1">
+                    <img th:src="${currUser.avatarUrl}" alt="url无效！" id="avatarImg" class="rounded pic-head">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-10 mb-1 height-40">
+            <button class="btn btn-primary float-right" type="submit">保存</button>
+        </div>
+    </form>
+</div>
+<div th:fragment="setPassword">
+    <form id="set-password">
+        <div class="col-md-8 mb-1 height-100">
+            <div class="form-row">
+                <label for="oldPassword">原密码</label>
+                <input type="password" name="oldPassword" class="form-control" id="oldPassword" required>
+                <div class="invalid-feedback">
+                    密码不能为空
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 mb-1 height-100">
+            <div class="form-row">
+                <label for="password">新密码</label>
+                <input type="password" class="form-control" name="password" id="password" required>
+                <div class="invalid-feedback">
+                    密码太短，密码至少为6位
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 mb-1 height-100">
+            <div class="form-row">
+                <label for="validate_password">确认密码</label>
+                <input type="password" class="form-control" id="validate_password" required>
+                <div class="invalid-feedback">
+                    两次输入密码不一致！
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8 mb-1 height-40">
+            <button class="btn btn-primary float-right" type="submit">确认修改</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

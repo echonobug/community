@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import fun.jwei.community.model.User;
 import fun.jwei.community.service.NotificationService;
 import fun.jwei.community.service.QuestionService;
+import fun.jwei.community.util.MyConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,24 +29,35 @@ public class ProfileController {
         User user = (User) request.getSession().getAttribute("user");
         PageInfo<?> pageInfo = null;
         String actionName = "";
-        String listFragment = "";
+        String contentDiv = "";
+        String template = "list";
         if (action.equals("myQuestion")) {
             actionName = "我的提问";
-            listFragment = "list";
+            contentDiv = "list";
             pageInfo = questionService.findByCreatorId(user.getId(), page, pageSize);
         } else if (action.equals("questionReply")) {
             actionName = "最新回复";
-            listFragment = "notification-list";
+            contentDiv = "notification-list";
             pageInfo = notificationService.findReply(user.getId(), page, pageSize);
-        } else {
+        } else if (action.equals("editProfile")) {
+            actionName = "个人资料";
+            contentDiv = "editProfile";
+            template = "user-info";
+            model.addAttribute("currUser", user);
+        } else if(action.equals("setPassword")) {
+            actionName = "修改密码";
+            contentDiv = "setPassword";
+            template = "user-info";
+        }else{
             pageInfo = new PageInfo<>();
         }
         Long unreadCount = notificationService.getUnreadReplyCount(user.getId());
-        model.addAttribute("unreadCount",unreadCount);
-        model.addAttribute("actionName",actionName);
-        model.addAttribute("listFragment",listFragment);
+        model.addAttribute("unreadCount", unreadCount);
+        model.addAttribute("actionName", actionName);
+        model.addAttribute("template", template);
+        model.addAttribute("contentDiv", contentDiv);
         model.addAttribute("pageInfo", pageInfo);
-        model.addAttribute("pageAction","/profile/"+action+"?page=");
+        model.addAttribute("pageAction", "/profile/" + action + "?page=");
         return "profile";
     }
 
