@@ -1,9 +1,9 @@
 server:
-  port: 80
+  port: 50066
 
 #上传图片保存位置git
-#uploadDir: /home/jw/community/uploads/
-uploadDir: H:/community/uploads/
+uploadDir: /home/jw/community/uploads/
+#uploadDir: H:/community/uploads/
 
 redis:
   ip1: 47.94.18.106
@@ -38,10 +38,10 @@ spring:
 #github app
 github:
   client:
-    id: 7c83f786ddc818261e4e
-    secret: dd4320caf695432e545e2988320425409d690f08
+    id: f226e76b4899094854be
+    secret: b49ff3ee8dede5feb4027447f9fbdab7533c60ed
   redirect:
-    uri: http://localhost/github/callback
+    uri: http://47.94.18.106/github/callback
 #mybatis
 mybatis:
   configuration:
