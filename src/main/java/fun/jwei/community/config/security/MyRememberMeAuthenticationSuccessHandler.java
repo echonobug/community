@@ -22,5 +22,6 @@ public class MyRememberMeAuthenticationSuccessHandler implements AuthenticationS
         String id = ((MyUserDetails) authentication.getPrincipal()).getUsername();
         User user = userMapper.selectByPrimaryKey(Long.valueOf(id));
         request.getSession().setAttribute("user", user);
+        response.sendRedirect("/");
     }
 }
