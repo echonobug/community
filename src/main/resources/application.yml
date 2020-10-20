@@ -5,10 +5,10 @@ server:
 uploadDir: /home/jw/community/uploads/
 #uploadDir: H:/community/uploads/
 
-redis:
-  ip1: 47.94.18.106
-  ip2: 123.56.125.48
-  ip3: 111.230.203.6
+#redis:
+#  ip1: 47.94.18.106
+#  ip2: 123.56.125.48
+#  ip3: 111.230.203.6
 
 spring:
   datasource:
@@ -20,20 +20,20 @@ spring:
   servlet:
     multipart.max-file-size: 20MB
     multipart.max-request-size: 20MB
-  session:
-    store-type: redis
-  redis:
-    password: jiangwei
-    cluster:
-      nodes: ${redis.ip1}:50036,${redis.ip1}:50037,${redis.ip2}:50036,${redis.ip2}:50037,${redis.ip3}:50036,${redis.ip3}:50037
-      max-redirects: 3
-    lettuce:
-      pool:
-        max-active: 8
-        max-idle: 8
-        min-idle: 0
-        max-wait: 1000
-      shutdown-timeout: 100
+#  session:
+#    store-type: redis
+#  redis:
+#    password: jiangwei
+#    cluster:
+#      nodes: ${redis.ip1}:50036,${redis.ip1}:50037,${redis.ip2}:50036,${redis.ip2}:50037,${redis.ip3}:50036,${redis.ip3}:50037
+#      max-redirects: 3
+#    lettuce:
+#      pool:
+#        max-active: 8
+#        max-idle: 8
+#        min-idle: 0
+#        max-wait: 1000
+#      shutdown-timeout: 100
 
 #github app
 github:
